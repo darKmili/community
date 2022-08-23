@@ -59,17 +59,17 @@ class UserMapperTest  {
 
     @Test
     void insertUser() {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 200; i++) {
             User user = new User();
             user.setUsername(RandomUtil.randomString(10));
             user.setPassword(RandomUtil.randomString(12));
             user.setSalt(RandomUtil.randomString(5));
             user.setEmail(RandomUtil.randomNumbers(10)+"@qq.com");
-            user.setActivationCode(RandomUtil.randomString(8));
+            user.setActivationCode(RandomUtil.randomString(6));
             user.setType(0);
             user.setStatus(0);
             user.setCreateTime(new Date());
-            user.setHeaderUrl(RandomUtil.randomString(10));
+            user.setHeaderUrl(String.format("https://images.nowcoder.com/head/%dt.png", RandomUtil.randomInt(500)));
             userMapper.insertUser(user);
 
         }

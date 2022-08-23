@@ -43,7 +43,7 @@ class DiscussPostMapperTest {
     void insertDiscussPost() {
 
         for (int i = 0; i < 200; i++) {
-            int user_id = RandomUtil.randomInt(2000);
+            int user_id = RandomUtil.randomInt(200);
             DiscussPost discussPost = new DiscussPost();
             discussPost.setUserId(user_id);
             discussPost.setTitle("世界上只有一个中国");
