@@ -79,7 +79,10 @@ public class Page {
      * @return
      */
     public int getOffset(){
-        return (current-1)*limit;
+        if ((current-1)*limit>rows){
+            current = getTotal();
+        }
+        return Math.max(0,(current-1)*limit);
     }
 
     /**

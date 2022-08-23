@@ -15,4 +15,6 @@ public interface DiscussPostService {
     List<DiscussPost> findDiscussPost(int userId,int offset,int limit);
 
     int findCountDiscussPost(int userId);
+
+    int addDiscussPost(DiscussPost discussPost);
 }

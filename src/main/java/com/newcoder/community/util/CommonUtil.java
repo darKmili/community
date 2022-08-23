@@ -4,6 +4,8 @@ import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.MD5;
 
+import java.util.Map;
+
 /**
  * 通用工具类
  *
@@ -25,4 +27,6 @@ public class CommonUtil {
         MD5 md5 = MD5.create();
         return md5.digestHex(s);
     }
+
+
 }
