@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcoder.community.dao.CommentMapper">
+
+    <sql id="selectFields">
+        id,user_id,entity_type,entity_id,target,content,status,crate_time
+    </sql>
+    <select id="countCommentRowsByType" resultType="int">
+        select count(t.id)
+        from comment t
+        where t.status=0 and t.entity_type = #{entityType} and t.entity_id=#{entityId}
+    </select>
+    <select id="selectCommentByEntityTypeAndEntityId" resultType="comment">
+        select count(t.id)
+        from comment t
+        where t.status=0 and t.entity_type = #{entityType} and t.entity_id=#{entityId}
+        limit #{offset},#{limit}
+    </select>
+</mapper>

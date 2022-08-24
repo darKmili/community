@@ -22,6 +22,7 @@ public class DiscussPost implements Serializable {
     private Integer type;
     private Integer status;
     private Date createTime;
+    private Integer commentCount;
     private Double score;
 
 }

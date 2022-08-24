@@ -42,7 +42,7 @@ class DiscussPostMapperTest {
     @Test
     void insertDiscussPost() {
 
-        for (int i = 0; i < 200; i++) {
+        for (int i = 0; i < 50; i++) {
             int user_id = RandomUtil.randomInt(200);
             DiscussPost discussPost = new DiscussPost();
             discussPost.setUserId(user_id);
@@ -52,6 +52,7 @@ class DiscussPostMapperTest {
             discussPost.setScore(RandomUtil.randomDouble(100));
             discussPost.setType(0);
             discussPost.setStatus(0);
+            discussPost.setCommentCount(0);
             discussPostMapper.insertDiscussPost(discussPost);
         }
     }

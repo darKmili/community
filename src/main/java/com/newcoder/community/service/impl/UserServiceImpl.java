@@ -7,10 +7,7 @@ import com.newcoder.community.dao.UserMapper;
 import com.newcoder.community.entity.LoginTicket;
 import com.newcoder.community.entity.User;
 import com.newcoder.community.service.UserService;
-import com.newcoder.community.util.ActiveCode;
-import com.newcoder.community.util.CommonUtil;
-import com.newcoder.community.util.HostHolder;
-import com.newcoder.community.util.MailClient;
+import com.newcoder.community.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -28,7 +25,7 @@ import java.util.Map;
  * @Date: 2022/8/21 1:26 上午
  */
 @Service
-public class UserServiceImpl implements UserService, ActiveCode {
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
@@ -112,17 +109,17 @@ public class UserServiceImpl implements UserService, ActiveCode {
     public int activation(int userId, String activeCode) {
         User user = findUserById(userId);
         if (user == null) {
-            return ACTIVE_FAIL;
+            return Constants.ACTIVE_FAIL;
         }
         if (user.getStatus() == 0 && user.getActivationCode().equals(activeCode)) {
 
             userMapper.updateStatus(user.getId(), 1);
-            return ACTIVE_SUCCESS;
+            return Constants.ACTIVE_SUCCESS;
         }
         if (user.getStatus() == 1) {
-            return ACTIVE_REPLICA;
+            return Constants.ACTIVE_REPLICA;
         }
-        return ACTIVE_FAIL;
+        return Constants.ACTIVE_FAIL;
 
     }
 

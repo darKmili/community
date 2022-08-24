@@ -54,7 +54,6 @@ public class SensitiveWordsFilter {
             while ((keyword =bufferedReader.readLine())!=null){
                 this.addWord(keyword);
             }
-            System.out.println("init");
         }catch (IOException e){
             log.error("敏感词过滤工具初始化失败");
             e.printStackTrace();

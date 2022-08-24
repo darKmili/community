@@ -1,11 +1,9 @@
 package com.newcoder.community.controller;
 
-import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.StrUtil;
 import com.google.code.kaptcha.Producer;
 import com.newcoder.community.entity.User;
 import com.newcoder.community.service.UserService;
-import com.newcoder.community.util.ActiveCode;
 import com.newcoder.community.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,7 +30,7 @@ import java.util.Map;
  * @version: 1.0
  */
 @Controller
-public class LoginController implements ActiveCode {
+public class LoginController  {
     @Autowired
     private UserService userService;
 
@@ -71,10 +69,10 @@ public class LoginController implements ActiveCode {
     @GetMapping("/active/{userId}/{activationCode}")
     public String activation(Model model, @PathVariable("userId") Integer userId, @PathVariable("activationCode") String activationCode) {
         int activation = userService.activation(userId, activationCode);
-        if (activation == ACTIVE_SUCCESS) {
+        if (activation == Constants.ACTIVE_SUCCESS) {
             model.addAttribute("message", "您的账号已经激活成功,可以正常使用了!");
             model.addAttribute("target", "/login");
-        } else if (activation == ACTIVE_REPLICA) {
+        } else if (activation == Constants.ACTIVE_REPLICA) {
             model.addAttribute("message", "您的账号已经激活,无需重复激活");
             model.addAttribute("target", "/login");
 
